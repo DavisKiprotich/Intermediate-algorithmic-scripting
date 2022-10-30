@@ -1,0 +1,14 @@
+function destroyer(arr) {
+  let survivors =[];
+  let objectsConquered = Object.values(arguments)[0]
+  let objectsDestroyed = Object.values(arguments).splice(1)
+  for(let i = 0;i < objectsConquered.length;i++){
+    let positionToRecon = objectsConquered[i];
+    if(objectsDestroyed.indexOf(positionToRecon) === -1){
+      survivors.push(positionToRecon)
+    }
+  }
+  return survivors
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
