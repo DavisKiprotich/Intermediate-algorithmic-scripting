@@ -1,0 +1,15 @@
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  function compareArr(first,second){
+    for(let i = 0;i < first.length; i++){
+      if(second.indexOf(first[i]) === -1){
+        newArr.push(first[i])
+      }
+    }
+  }
+  compareArr(arr1,arr2)
+  compareArr(arr2,arr1)
+  return newArr;
+}
+
+diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
