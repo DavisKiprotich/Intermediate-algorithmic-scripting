@@ -1,0 +1,15 @@
+function whatIsInAName(collection, source) {
+  const arr = [];
+  collection.forEach(collection => {
+    let index = 0;
+    for(let key in source){
+      if(collection[key] === source[key]){
+        index += 1
+      }
+      if(index === Object.keys(source).length){
+        arr.push(collection)
+      }
+    }
+  })
+  return arr;
+}
