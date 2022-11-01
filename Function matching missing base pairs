@@ -1,0 +1,21 @@
+function pairElement(str) {
+  function calculatePair(initial){
+    if(initial === "G"){
+      return "C"
+    }else if(initial === "C"){
+      return "G"
+    }else if(initial === "T"){
+      return "A"
+    }else if(initial === "A"){
+      return "T"
+    }
+  }
+
+  return str.split("").map(initialPair => {
+    let pair = [initialPair, calculatePair(initialPair)]
+    return pair
+  })
+  
+}
+
+pairElement("GCG");
