@@ -1,0 +1,12 @@
+function fearNotLetter(str) {
+  let letters = "abcdefghijklmnopqrstuvwxyz".split("")
+  let startingPosition = letters.indexOf(str[0])
+  
+  for(let i = startingPosition;i < startingPosition + str.length;i++){
+    if(letters[i] != str[i - startingPosition]){
+      return letters[i]
+    }
+  }
+}
+
+console.log(fearNotLetter("abcdefghjklmno"));
