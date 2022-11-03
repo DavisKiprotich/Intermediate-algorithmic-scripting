@@ -1,0 +1,25 @@
+function convertHTML(str) {
+  function conversion(letter){
+    if(letter === "&"){
+      return "&amp;"
+    }else if(letter === "<"){
+      return "&lt;"
+    }else if(letter === ">"){
+      return "&gt;"
+    }else if(letter === '"'){
+      return "&quot;"
+    }else if(letter === "'"){
+      return "&apos;"
+    }
+  }
+  
+  let characters = ["&", "<", ">", '"', "'"]
+  for(let i = 0;i <= str.length;i++){
+    if(characters.indexOf(str[i]) != -1){
+      str = str.slice(0, i) + conversion(str[i]) + str.slice(i + 1)
+    }
+  }
+  return str;
+}
+
+console.log(convertHTML("Dolce & Gabbana"));
