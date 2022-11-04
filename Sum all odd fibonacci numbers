@@ -1,0 +1,19 @@
+function sumFibs(num) {
+  let previousNum = 1;
+  let currentNum = 1;
+  let sumOfFibonacci = 1;
+  while(currentNum <= num){
+    
+    if(currentNum % 2 != 0){
+      sumOfFibonacci += currentNum
+      
+    }
+    let tempNum = currentNum;
+    currentNum += previousNum;
+    previousNum = tempNum
+
+  }
+   return sumOfFibonacci;
+}
+
+console.log(sumFibs(1000));
