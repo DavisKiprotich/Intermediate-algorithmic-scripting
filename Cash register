@@ -1,0 +1,40 @@
+function checkCashRegister(price, cash, cid) {
+  var change = {};
+  var changeDue = (cash - price) * 100;
+  var cidTotal = 0;
+  for (let i = 0; i < cid.length; i++) {
+    cidTotal += cid[i][1] * 100;
+  }
+  if (changeDue == cidTotal) {
+    change.status = "CLOSED";
+    change.change = cid;
+    return change;
+  }
+  change.change = [];
+
+  var denominations = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100];
+  var remaining = changeDue;
+  var units = ["PENNY", 'NICKEL', 'DIME', 'QUARTER', 'ONE', 'FIVE', 'TEN', 'TWENTY', 'ONE HUNDRED'];
+  for (let i = cid.length - 1; i >= 0; i--) {
+    let leastCount = denominations[i] * 100;
+    let vid = cid[i][1] * 100; //value in drawer for current denomination
+    let n = 0;
+    while (remaining >= leastCount && vid > 0) {
+      vid -= leastCount;
+      remaining -= leastCount;
+      n ++;
+    }
+    if (n > 0) {
+      change.change.push([units[i], n * leastCount / 100]);
+    }
+  }
+  console.log(change.change); //Console.log statement 1
+  console.log(remaining); //Console.log statement 2
+  if (remaining == 0) {
+    change.status = "OPEN";
+  } else {
+    change.status = "INSUFFICIENT_FUNDS"
+    change.change = [];
+  }
+  return change;
+}
